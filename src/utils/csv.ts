@@ -47,11 +47,6 @@ const HEADER_ALIASES: Record<string, keyof Guest> = {
   name: 'name',
   guest: 'name',
   'full name': 'name',
-  group: 'groupId',
-  'group id': 'groupId',
-  family: 'groupId',
-  'family id': 'groupId',
-  table: 'groupId',
 };
 
 export interface ParseResult {
@@ -64,10 +59,9 @@ export interface ParseResult {
  * Parse pasted/CSV text into Guest records.
  *
  * Two modes, auto-detected:
- *  1. Structured: first row contains a recognised header (name/group/...).
+ *  1. Structured: first row contains a recognised header (name/...).
  *     Columns are mapped by alias regardless of order.
- *  2. Loose: no header recognised -> every non-empty line becomes a guest name,
- *     with an optional second column treated as group.
+ *  2. Loose: no header recognised -> every non-empty line becomes a guest name.
  */
 export function parseGuestText(raw: string): ParseResult {
   const text = raw.replace(/\r\n?/g, '\n').trim();
@@ -109,9 +103,7 @@ export function parseGuestText(raw: string): ParseResult {
         skipped++;
         continue;
       }
-      const draft: Partial<Guest> = { name };
-      if (cells[1]) draft.groupId = cells[1];
-      guests.push(finaliseGuest(draft));
+      guests.push(finaliseGuest({ name }));
     }
   }
 
@@ -122,7 +114,6 @@ function finaliseGuest(draft: Partial<Guest>): Guest {
   return {
     id: makeId(),
     name: (draft.name ?? '').trim(),
-    groupId: (draft.groupId ?? '').trim(),
     tableId: null,
     seatIndex: null,
   };

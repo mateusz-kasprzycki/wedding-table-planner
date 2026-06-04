@@ -14,11 +14,7 @@ export default function GuestList({ guests, emptyHint }: GuestListProps) {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return guests;
-    return guests.filter(
-      (g) =>
-        g.name.toLowerCase().includes(q) ||
-        g.groupId.toLowerCase().includes(q),
-    );
+    return guests.filter((g) => g.name.toLowerCase().includes(q));
   }, [guests, query]);
 
   return (
@@ -33,7 +29,7 @@ export default function GuestList({ guests, emptyHint }: GuestListProps) {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search name or group…"
+            placeholder="Search name…"
             className="field pl-8"
           />
         </div>

@@ -8,13 +8,13 @@ interface ImportModalProps {
   onClose: () => void;
 }
 
-const SAMPLE = `Name,Group
-Alice Smith,Bride
-James Smith,Groom
-Emma Johnson,Bride Family
-Oliver Johnson,Bride Family
-Sophie Brown,University
-Harry Brown,University`;
+const SAMPLE = `Name
+Alice Smith
+James Smith
+Emma Johnson
+Oliver Johnson
+Sophie Brown
+Harry Brown`;
 
 export default function ImportModal({ open, onClose }: ImportModalProps) {
   const { addGuests } = usePlanner();
@@ -92,11 +92,11 @@ export default function ImportModal({ open, onClose }: ImportModalProps) {
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={7}
-              placeholder={'Name,Group\nAlice Smith,Bride\n…or just one name per line'}
+              placeholder={'Alice Smith\nJames Smith\n…one name per line'}
               className="field scroll-thin resize-y font-mono text-xs leading-relaxed"
             />
             <p className="mt-1 text-[11px] text-charcoal/45">
-              Recognised columns: <b>Name</b>, Group / Family. Order doesn't matter. No header? Each line is treated as a guest name.
+              One name per line, or a CSV with a <b>Name</b> column. No header needed.
             </p>
           </div>
 
@@ -119,7 +119,6 @@ export default function ImportModal({ open, onClose }: ImportModalProps) {
                     className="flex items-center gap-2 rounded bg-cream px-2 py-1 text-xs"
                   >
                     <span className="flex-1 font-semibold text-charcoal">{g.name}</span>
-                    {g.groupId && <span className="text-charcoal/40">·{g.groupId}</span>}
                   </div>
                 ))}
               </div>

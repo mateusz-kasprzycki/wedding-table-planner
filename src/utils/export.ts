@@ -58,8 +58,8 @@ export function exportPDF(state: PlannerState): void {
 
   for (const table of state.tables) {
     const occupants = state.guests.filter((g) => g.tableId === table.id);
-    const rows = occupants.map((g) => [g.name, g.groupId || '—']);
-    if (rows.length === 0) rows.push(['(empty)', '']);
+    const rows = occupants.map((g) => [g.name]);
+    if (rows.length === 0) rows.push(['(empty)']);
 
     autoTable(doc, {
       startY: cursorY,
@@ -67,11 +67,11 @@ export function exportPDF(state: PlannerState): void {
         [
           {
             content: `${table.name}  ·  ${table.shape}  ·  ${occupants.length}/${table.seats} seats`,
-            colSpan: 2,
+            colSpan: 1,
             styles: { fillColor: [44, 74, 59], textColor: 251, halign: 'left', fontStyle: 'bold' },
           },
         ],
-        ['Guest', 'Group'],
+        ['Guest'],
       ],
       body: rows,
       theme: 'grid',

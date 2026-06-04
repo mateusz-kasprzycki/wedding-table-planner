@@ -3,8 +3,6 @@ export type TableShape = 'Round' | 'Rectangular' | 'Square';
 export interface Guest {
   id: string;
   name: string;
-  /** Group / family identifier used to keep parties together. Empty = ungrouped. */
-  groupId: string;
   /** id of the table the guest is seated at, or null if unseated. */
   tableId: string | null;
   /** Clockwise seat position at the table (0 = first seat). null = unseated. */

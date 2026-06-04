@@ -24,9 +24,6 @@ export default function GuestCard({ guest, showAssign = true }: GuestCardProps) 
     >
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-semibold text-charcoal">{guest.name}</p>
-        {guest.groupId && (
-          <span className="text-[11px] text-charcoal/45">·{guest.groupId}</span>
-        )}
       </div>
 
       {showAssign && (
