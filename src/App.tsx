@@ -28,14 +28,6 @@ function AppInner() {
     }
   }
 
-  const initials =
-    activeGuest?.name
-      .split(' ')
-      .filter(Boolean)
-      .map((w) => w[0].toUpperCase())
-      .slice(0, 2)
-      .join('') ?? '';
-
   return (
     <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="flex h-screen flex-col">
@@ -58,8 +50,8 @@ function AppInner() {
 
       <DragOverlay>
         {activeGuest && (
-          <div className="rounded-full bg-brass px-3 py-1.5 text-xs font-semibold text-cream shadow-lift">
-            {initials || activeGuest.name}
+          <div className="rounded-full bg-brass px-2.5 py-[2px] text-[11px] leading-none font-semibold text-cream shadow-lift whitespace-nowrap">
+            {activeGuest.name}
           </div>
         )}
       </DragOverlay>
