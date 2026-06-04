@@ -1,5 +1,4 @@
 import { useDraggable } from '@dnd-kit/core';
-import { CSS } from '@dnd-kit/utilities';
 import { usePlanner } from '../context/PlannerContext';
 import type { Guest } from '../types';
 import { IconTrash } from './icons';
@@ -11,14 +10,14 @@ interface GuestCardProps {
 
 export default function GuestCard({ guest, showAssign = true }: GuestCardProps) {
   const { state, assignGuest, removeGuest } = usePlanner();
-  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: guest.id,
   });
 
   return (
     <div
       ref={setNodeRef}
-      style={{ transform: CSS.Translate.toString(transform), opacity: isDragging ? 0.4 : 1 }}
+      style={{ opacity: isDragging ? 0.4 : 1 }}
       {...listeners}
       {...attributes}
       className="group flex cursor-grab items-center gap-2 rounded-lg border border-mist bg-cream/90 px-3 py-2 shadow-card transition hover:border-[#d4c9bf] hover:shadow-lift/50 active:cursor-grabbing"
