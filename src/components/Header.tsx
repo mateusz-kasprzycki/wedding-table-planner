@@ -28,7 +28,7 @@ export default function Header({ onImportClick, onRestoreClick }: HeaderProps) {
           <div className="mb-2 flex items-center gap-3">
             <div className="h-px w-5 bg-gradient-to-r from-transparent to-brass/55" />
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-brass/80">
-              Marta &amp; Mateusz · Wedding Seating
+              Wedding Seating Planner
             </p>
             <div className="h-px w-12 bg-gradient-to-r from-brass/55 to-transparent" />
           </div>

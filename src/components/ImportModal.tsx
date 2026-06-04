@@ -9,12 +9,12 @@ interface ImportModalProps {
 }
 
 const SAMPLE = `Name,Group
-Marta Nowak,Bride
-Mateusz Wójcik,Groom
-Anna Kowalska,Nowak Family
-Piotr Kowalski,Nowak Family
-Zofia Lewandowska,University
-Jan Kamiński,University`;
+Alice Smith,Bride
+James Smith,Groom
+Emma Johnson,Bride Family
+Oliver Johnson,Bride Family
+Sophie Brown,University
+Harry Brown,University`;
 
 export default function ImportModal({ open, onClose }: ImportModalProps) {
   const { addGuests } = usePlanner();
@@ -92,7 +92,7 @@ export default function ImportModal({ open, onClose }: ImportModalProps) {
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={7}
-              placeholder={'Name,Group\nMarta Nowak,Bride\n…or just one name per line'}
+              placeholder={'Name,Group\nAlice Smith,Bride\n…or just one name per line'}
               className="field scroll-thin resize-y font-mono text-xs leading-relaxed"
             />
             <p className="mt-1 text-[11px] text-charcoal/45">

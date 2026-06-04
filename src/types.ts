@@ -32,11 +32,11 @@ export interface PlannerState {
 
 export const SHAPE_OPTIONS: TableShape[] = ['Round', 'Rectangular', 'Square'];
 
-export const STORAGE_KEY = 'zakopane-seating-planner/v1';
+export const STORAGE_KEY = 'wedding-seating-planner/v1';
 
 export const DEFAULT_STATE: PlannerState = {
   version: 1,
-  title: 'Marta & Mateusz — Zakopane Seating Planner',
+  title: 'Our Wedding — Seating Planner',
   guests: [],
   tables: [],
 };
